@@ -1,0 +1,428 @@
+/* Gallery Page Specific Styles */
+
+.gallery-page {
+    padding: 100px 0;
+    background-color: var(--bg-color);
+}
+
+.gallery-page .section-header {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 60px auto;
+}
+
+.gallery-page .section-header h2 {
+    font-size: 3.5rem;
+    font-weight: 800;
+    line-height: 1.15;
+    margin: 16px 0 24px 0;
+    color: var(--text-color);
+}
+
+.gallery-page .section-header p {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+    font-weight: 300;
+}
+
+/* Filter Controls */
+.filter-controls {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 60px;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    background-color: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    padding: 10px 24px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.filter-btn:hover,
+.filter-btn.active {
+    background-color: var(--text-color);
+    border-color: var(--text-color);
+    color: var(--bg-color);
+}
+
+/* Gallery Collage Grid */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 260px;
+    grid-auto-flow: dense;
+    gap: 30px;
+    width: 100%;
+}
+
+.gallery-card {
+    position: relative;
+    opacity: 1;
+    transform: scale(1);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    width: 100%;
+    height: 100%;
+}
+
+/* Collage Item Sizes */
+.gallery-card.standard {
+    grid-column: span 1;
+    grid-row: span 1;
+}
+
+.gallery-card.tall {
+    grid-column: span 1;
+    grid-row: span 2;
+}
+
+.gallery-card.wide {
+    grid-column: span 2;
+    grid-row: span 1;
+}
+
+/* Card Hide State for Filters */
+.gallery-card.hidden {
+    display: none !important;
+}
+
+.gallery-img-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    cursor: pointer;
+    background-color: var(--hover-bg);
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.02);
+}
+
+.gallery-img-wrapper:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+}
+
+.gallery-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60%;
+    padding: 30px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0) 100%);
+    opacity: 0;
+    display: flex;
+    align-items: flex-end;
+    transition: opacity 0.4s ease;
+    z-index: 2;
+}
+
+.card-info {
+    transform: translateY(20px);
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card-category {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 6px;
+    display: block;
+}
+
+.card-title {
+    font-family: var(--font-heading);
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: #ffffff;
+}
+
+/* Hover States */
+.gallery-img-wrapper:hover img {
+    transform: scale(1.06);
+}
+
+.gallery-img-wrapper:hover .card-overlay {
+    opacity: 1;
+}
+
+.gallery-img-wrapper:hover .card-info {
+    transform: translateY(0);
+}
+
+/* Lightbox Modal */
+.lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(10, 10, 10, 0.98);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    z-index: 2000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.lightbox.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Close & Navigation Buttons */
+.lightbox-close,
+.lightbox-prev,
+.lightbox-next {
+    position: absolute;
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.6);
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 2100;
+}
+
+.lightbox-close:hover,
+.lightbox-prev:hover,
+.lightbox-next:hover {
+    color: #ffffff;
+}
+
+.lightbox-close {
+    top: 30px;
+    right: 40px;
+    font-size: 3rem;
+    line-height: 0.5;
+}
+
+.lightbox-prev {
+    left: 40px;
+    font-size: 2.5rem;
+}
+
+.lightbox-next {
+    right: 40px;
+    font-size: 2.5rem;
+}
+
+/* Content Container */
+.lightbox-content {
+    max-width: 900px;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform: translateY(30px) scale(0.98);
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.lightbox.active .lightbox-content {
+    transform: translateY(0) scale(1);
+}
+
+.lightbox-img {
+    max-height: 65vh;
+    max-width: 100%;
+    object-fit: contain;
+    border-radius: 4px;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5);
+    background-color: #111111;
+}
+
+/* Dynamic details plaque below image */
+.lightbox-details {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 20px;
+    color: #ffffff;
+    gap: 40px;
+}
+
+.lightbox-text {
+    max-width: 60%;
+}
+
+.lightbox-category {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 6px;
+    display: block;
+}
+
+.lightbox-title {
+    font-family: var(--font-heading);
+    font-size: 1.85rem;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+.lightbox-desc {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.7);
+    line-height: 1.6;
+    font-weight: 300;
+}
+
+.lightbox-meta {
+    font-size: 0.8rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: rgba(255, 255, 255, 0.4);
+    text-align: right;
+    padding-top: 5px;
+}
+
+/* Responsiveness overrides */
+@media (max-width: 992px) {
+    .gallery-page {
+        padding: 80px 0;
+    }
+
+    .gallery-page .section-header h2 {
+        font-size: 2.6rem;
+    }
+
+    .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 220px;
+        gap: 20px;
+    }
+
+    .lightbox-close {
+        top: 20px;
+        right: 20px;
+        font-size: 2.5rem;
+    }
+
+    .lightbox-prev {
+        left: 20px;
+        font-size: 2rem;
+    }
+
+    .lightbox-next {
+        right: 20px;
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .gallery-page .section-header {
+        margin-bottom: 40px;
+    }
+
+    .gallery-page .section-header h2 {
+        font-size: 2.4rem;
+    }
+
+    .filter-controls {
+        margin-bottom: 40px;
+    }
+
+    .lightbox-details {
+        flex-direction: column;
+        gap: 15px;
+        align-items: flex-start;
+    }
+
+    .lightbox-text {
+        max-width: 100%;
+    }
+
+    .lightbox-meta {
+        text-align: left;
+    }
+}
+
+@media (max-width: 576px) {
+    .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 150px;
+        gap: 12px;
+    }
+
+    .gallery-card.standard {
+        grid-column: span 1 !important;
+        grid-row: span 1 !important;
+    }
+
+    .gallery-card.tall {
+        grid-column: span 1 !important;
+        grid-row: span 2 !important;
+    }
+
+    .gallery-card.wide {
+        grid-column: span 2 !important;
+        grid-row: span 1 !important;
+    }
+
+    .card-overlay {
+        padding: 12px;
+    }
+
+    .card-title {
+        font-size: 0.95rem;
+    }
+
+    .card-category {
+        font-size: 0.6rem;
+        letter-spacing: 1px;
+        margin-bottom: 2px;
+    }
+
+    .filter-btn {
+        padding: 8px 18px;
+        font-size: 0.75rem;
+    }
+
+    .lightbox-prev,
+    .lightbox-next {
+        bottom: 20px;
+        top: auto;
+        transform: none;
+    }
+
+    .lightbox-prev {
+        left: 30%;
+    }
+
+    .lightbox-next {
+        right: 30%;
+    }
+}

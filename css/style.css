@@ -1,0 +1,7 @@
+/* 
+   This stylesheet has been split into:
+   - css/global.css (Global variables, reset, navbar, footer, buttons, scrollbar, layouts)
+   - css/home.css (Page-specific layouts for sections: Hero, About, Services, Gallery, Reviews, CTA)
+*/
+@import url('global.css');
+@import url('home.css');
