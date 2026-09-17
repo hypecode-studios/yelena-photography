@@ -10,7 +10,7 @@ require 'components/navbar.php';
     <section class="hero">
         <div class="hero-bg" data-parallax data-parallax-speed="-0.15"></div>
         <div class="hero-content">
-            <h1 class="reveal"><span class="nobrk">Beautiful <span class="boxed-word">Moments</span>,</span> <span
+            <h1 class="reveal"><span class="nobrk">Yess <span class="boxed-word">nig....</span>,</span> <span
                     class="nobrk">Captured <em class="accent">Forever</em></span></h1>
             <p class="reveal delay-100">Professional photography that tells your unique story, capturing authentic
                 moments to elevate your
